@@ -14,6 +14,7 @@ import {
 } from 'ui';
 
 import {Post as PostComponent} from './components';
+import useFirebase from '../../core/Notification/useFirebase';
 
 const NUMBER_OF_POSTS_PER_LOADING = 5;
 export const Home = () => {
@@ -51,6 +52,8 @@ export const Home = () => {
   };
 
   const posts = data?.pages.map(page => page.data).flat() ?? [];
+
+  const {isEnabled, deleteToken, toggleNotificationSetting} = useFirebase();
 
   return (
     <Screen justifyContent="flex-start" paddingVertical="m">
